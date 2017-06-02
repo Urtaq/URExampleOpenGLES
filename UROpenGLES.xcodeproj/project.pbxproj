@@ -45,6 +45,7 @@
 		9716E1551EE007E300372B48 /* ShaderProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderProcessor.h; sourceTree = "<group>"; };
 		9716E1561EE007F700372B48 /* UROpenGLES-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UROpenGLES-Bridging-Header.h"; sourceTree = "<group>"; };
 		9716E1571EE007F700372B48 /* ShaderProcessor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShaderProcessor.mm; sourceTree = "<group>"; };
+		9716E1B31EE101BB00372B48 /* UROpenGLES-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UROpenGLES-PrefixHeader.pch"; sourceTree = "<group>"; };
 		97B4EE231EB83A25002EDAFB /* UROpenGLES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UROpenGLES.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97B4EE261EB83A25002EDAFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97B4EE281EB83A25002EDAFB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +137,7 @@
 				97B4EE2F1EB83A25002EDAFB /* LaunchScreen.storyboard */,
 				97B4EE321EB83A25002EDAFB /* Info.plist */,
 				9716E1561EE007F700372B48 /* UROpenGLES-Bridging-Header.h */,
+				9716E1B31EE101BB00372B48 /* UROpenGLES-PrefixHeader.pch */,
 			);
 			path = UROpenGLES;
 			sourceTree = "<group>";
@@ -467,6 +469,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 7AX2JZT3L8;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UROpenGLES/UROpenGLES-PrefixHeader.pch";
 				INFOPLIST_FILE = UROpenGLES/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zigbang.UROpenGLES;
@@ -484,6 +488,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 7AX2JZT3L8;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UROpenGLES/UROpenGLES-PrefixHeader.pch";
 				INFOPLIST_FILE = UROpenGLES/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zigbang.UROpenGLES;

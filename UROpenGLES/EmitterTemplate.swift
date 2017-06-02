@@ -12,6 +12,7 @@ let NumParticles: Int = 360
 
 struct Particle {
     var theta: Float
+    var shade: [Float] = Array<Float>(repeating: 0.0, count: 3)
 
     init() {
         self.theta = 0.0
@@ -21,27 +22,9 @@ struct Particle {
 struct Emitter {
     var particles: [Particle] = Array(repeating: Particle(), count: NumParticles)
     var k: Int
+    var color: [Float] = Array<Float>(repeating: 0.0, count: 3)
 
     init() {
-        self.k = 0
-    }
-}
-
-@objc
-class CParticle: NSObject {
-    var theta: Float
-
-    override init() {
-        self.theta = 0.0
-    }
-}
-
-@objc
-class CEmitter: NSObject {
-    var particles: [CParticle] = Array(repeating: CParticle(), count: NumParticles)
-    var k: Int
-
-    override init() {
         self.k = 0
     }
 }

@@ -41,6 +41,11 @@ class ViewController: UIViewController, GLKViewDelegate {
             particle.theta = GLKMathDegreesToRadians(Float(i))
 
             self.emitter.particles[i] = particle
+
+            // Assign a random shade offset to each particle, for each RGB channel
+            self.emitter.particles[i].shade[0] = self.randomFloatBetween(-0.25, and: 0.25);
+            self.emitter.particles[i].shade[1] = self.randomFloatBetween(-0.25, and: 0.25);
+            self.emitter.particles[i].shade[2] = self.randomFloatBetween(-0.25, and: 0.25);
         }
 
         // Create Vertex Buffer Object (VBO)
@@ -57,6 +62,10 @@ class ViewController: UIViewController, GLKViewDelegate {
 
     func loadEmitter() {
         self.emitter.k = Int(4.0)
+
+        self.emitter.color[0] = 0.76;   // Color: R
+        self.emitter.color[1] = 0.12;   // Color: G
+        self.emitter.color[2] = 0.34;   // Color: B
     }
 
     // MARK: - Load Shader
@@ -64,6 +73,11 @@ class ViewController: UIViewController, GLKViewDelegate {
         self.emitterShader = EmitterShader()
         self.emitterShader.loadShader()
         glUseProgram(self.emitterShader.program);
+    }
+
+    func randomFloatBetween(_ min: Float, and max: Float) -> Float {
+        let range: Float = max - min
+        return ((Float(arc4random() % (UInt32(RAND_MAX) + 1)) / Float(RAND_MAX)) * range) + min
     }
 
     // MARK: - GLKViewDelegate
@@ -79,23 +93,34 @@ class ViewController: UIViewController, GLKViewDelegate {
         // 2
         // Uniforms
         glUniformMatrix4fv(self.emitterShader.uProjectionMatrix, 1, 0, &projectionMatrix.m.0)
-        glUniform1f(self.emitterShader.uK, GLfloat(emitter.k))
+        glUniform1f(self.emitterShader.uK, GLfloat(self.emitter.k))
+        glUniform3f(self.emitterShader.uColor, self.emitter.color[0], self.emitter.color[1], self.emitter.color[2]);
 
         // 3
         // Attributes
         glEnableVertexAttribArray(GLuint(self.emitterShader.aTheta))
-        var offset: GLfloat = 0 // GLfloat(MemoryLayout<Float>.size)
+        let offset1: UnsafeRawPointer! = UnsafeRawPointer(bitPattern: 0)
         glVertexAttribPointer(GLuint(self.emitterShader.aTheta),    // Set pointer
             1,                                     // One component per particle
             GLenum(GL_FLOAT),                      // Data is floating point type
             GLboolean(GL_FALSE),                   // No fixed point scaling
             GLsizei(MemoryLayout<Particle>.size),  // No gaps in data
-            nil)      // Start from "theta" offset within bound buffer
+            offset1)      // Start from "theta" offset within bound buffer
+        glEnableVertexAttribArray(GLuint(self.emitterShader.aShade));
+
+        let offset2: UnsafeRawPointer = UnsafeRawPointer(bitPattern: MemoryLayout<Float>.size)!
+        glVertexAttribPointer(GLuint(self.emitterShader.aShade),                // Set pointer
+            3,                                        // Three components per particle
+            GLenum(GL_FLOAT),                                 // Data is floating point type
+            GLboolean(GL_FALSE),                                 // No fixed point scaling
+            GLsizei(MemoryLayout<Particle>.size),              // No gaps in data
+            offset2);      // Start from "shade" offset within bound buffer
 
         // 4
         // Draw particles
         glDrawArrays(GLenum(GL_POINTS), 0, GLsizei(NumParticles))
         glDisableVertexAttribArray(GLuint(self.emitterShader.aTheta))
+        glDisableVertexAttribArray(GLuint(self.emitterShader.aShade));
     }
 }
 

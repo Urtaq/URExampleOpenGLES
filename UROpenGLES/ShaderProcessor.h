@@ -8,8 +8,14 @@
 
 #import <GLKit/GLKit.h>
 
+static inline ptrdiff_t
+offset_of(long * _Nonnull base, long * _Nonnull ptr)
+{
+    return ptr - base;
+}
+
 @interface ShaderProcessor : NSObject
 
-- (GLuint)BuildProgram:(const char*)vertexShaderSource with:(const char*)fragmentShaderSource;
+- (GLuint)BuildProgram:(const char*_Nonnull)vertexShaderSource with:(const char*_Nonnull)fragmentShaderSource;
 
 @end
