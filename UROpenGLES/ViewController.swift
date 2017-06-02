@@ -9,9 +9,14 @@
 import UIKit
 import GLKit
 
-class ViewController: UIViewController, GLKViewDelegate {
+class ViewController: GLKViewController {
 
     var emitterShader: EmitterShader!
+
+    // Instance variables
+    private var _timeCurrent: Float = 0.0
+    private var _timeMax: Float = 0.0
+    private var _timeDirection: Int32 = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +29,15 @@ class ViewController: UIViewController, GLKViewDelegate {
         view.context = context
         view.delegate = self
 
+        // Initialize variables
+        _timeCurrent = 0.0;
+        _timeMax = 3.0;
+        _timeDirection = 1;
+
         self.loadShader()
+        // Load Texture
+        self.loadTexture("texture_32.png")
+//        self.loadTexture(with: #imageLiteral(resourceName: "texture_32"))
         self.loadParticles()
         self.loadEmitter()
     }
@@ -68,6 +81,16 @@ class ViewController: UIViewController, GLKViewDelegate {
         self.emitter.color[2] = 0.34;   // Color: B
     }
 
+    func update() {
+        if _timeCurrent > _timeMax {
+            _timeDirection = -1
+        } else if _timeCurrent < 0.0 {
+            _timeDirection = 1
+        }
+
+        _timeCurrent += Float(_timeDirection) * Float(self.timeSinceLastUpdate)
+    }
+
     // MARK: - Load Shader
     func loadShader() {
         self.emitterShader = EmitterShader()
@@ -80,10 +103,38 @@ class ViewController: UIViewController, GLKViewDelegate {
         return ((Float(arc4random() % (UInt32(RAND_MAX) + 1)) / Float(RAND_MAX)) * range) + min
     }
 
+    // MARK: -Load Texture
+    func loadTexture(_ fileName: String) {
+        let options = [GLKTextureLoaderOriginBottomLeft: NSNumber(booleanLiteral: true)]
+
+        let path: String = Bundle.main.path(forResource: fileName, ofType: nil)!
+        let texture: GLKTextureInfo! = try? GLKTextureLoader.texture(withContentsOfFile: path, options: options)
+        if texture == nil {
+            print("Error loading file")
+        }
+
+        glBindTexture(GLenum(GL_TEXTURE_2D), texture.name)
+    }
+
+    func loadTexture(with image: UIImage) {
+        let options = [GLKTextureLoaderOriginBottomLeft: NSNumber(booleanLiteral: true)]
+
+        let texture: GLKTextureInfo! = try? GLKTextureLoader.texture(with: image.cgImage!, options: options)
+        if texture == nil {
+            print("Error loading file")
+        }
+
+        glBindTexture(GLenum(GL_TEXTURE_2D), texture.name)
+    }
+
     // MARK: - GLKViewDelegate
-    func glkView(_ view: GLKView, drawIn rect: CGRect) {
+    override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         glClearColor(0.3, 0.74, 0.2, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
+
+        // Set the blending function (normal w/ premultiplied alpha)
+        glEnable(GLenum(GL_BLEND));
+        glBlendFunc(GLenum(GL_SRC_ALPHA), GLenum(GL_ONE_MINUS_SRC_ALPHA));
 
         // 1
         // Create Projection Matrix
@@ -95,6 +146,8 @@ class ViewController: UIViewController, GLKViewDelegate {
         glUniformMatrix4fv(self.emitterShader.uProjectionMatrix, 1, 0, &projectionMatrix.m.0)
         glUniform1f(self.emitterShader.uK, GLfloat(self.emitter.k))
         glUniform3f(self.emitterShader.uColor, self.emitter.color[0], self.emitter.color[1], self.emitter.color[2]);
+        glUniform1f(self.emitterShader.uTime, (_timeCurrent/_timeMax));
+        glUniform1i(self.emitterShader.uTexture, 0);
 
         // 3
         // Attributes

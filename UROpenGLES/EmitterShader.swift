@@ -19,11 +19,12 @@ let emitterVS = "// Attributes\n" +
     "\n" +
     "// Output to Fragment Shader\n" +
     "varying vec3 vShade;\n" +
+    "uniform float uTime;\n" +
     "\n" +
     "void main(void)\n" +
     "{\n" +
-    "  float x = cos(uK * aTheta) * sin(aTheta);\n" +
-    "  float y = cos(uK * aTheta) * cos(aTheta);\n" +
+    "  float x = uTime * cos(uK * aTheta) * sin(aTheta);\n" +
+    "  float y = uTime * cos(uK * aTheta) * cos(aTheta);\n" +
     "\n" +
     "  gl_Position = uProjectionMatrix * vec4(x, y, 0.0, 1.0);\n" +
     "  gl_PointSize = 16.0;\n" +
@@ -37,12 +38,14 @@ let emitterFS =
         "\n" +
         "// Uniforms\n" +
         "uniform highp vec3 uColor;\n" +
+        "uniform sampler2D uTexture;\n" +
         "\n" +
     "void main(void) {\n" +
 //    "  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n" +
+        "highp vec4 texture = texture2D(uTexture, gl_PointCoord);\n" +
         "highp vec4 color = vec4((uColor+vShade), 1.0);\n" +
         "color.rgb = clamp(color.rgb, vec3(0.0), vec3(1.0));\n" +
-        "gl_FragColor = color;\n" +
+        "gl_FragColor = texture * color;\n" +
 "}"
 
 @objc
@@ -56,6 +59,10 @@ class EmitterShader: NSObject {
 
     var aShade: GLint = 0
     var uColor: GLint = 0
+
+    var uTime: GLint = 0
+
+    var uTexture: GLint = 0
 
     func loadShader() {
         let shaderProcessor: ShaderProcessor = ShaderProcessor()
@@ -71,5 +78,9 @@ class EmitterShader: NSObject {
 
         // with the other uniforms
         self.uColor = glGetUniformLocation(self.program, "uColor");
+
+        self.uTime = glGetUniformLocation(self.program, "uTime");
+
+        self.uTexture = glGetUniformLocation(self.program, "uTexture");
     }
 }

@@ -22,6 +22,7 @@
 		97B4EE5E1EB83AB9002EDAFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B4EE5D1EB83AB9002EDAFB /* Foundation.framework */; };
 		97B4EE611EB86663002EDAFB /* EmitterTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B4EE601EB86663002EDAFB /* EmitterTemplate.swift */; };
 		97B4EE651EB874AC002EDAFB /* EmitterShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B4EE641EB874AC002EDAFB /* EmitterShader.swift */; };
+		97E9B9601EE1551A00088DC7 /* texture_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E9B95F1EE1551A00088DC7 /* texture_32.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		97B4EE621EB86894002EDAFB /* Emitter.vsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = Emitter.vsh; sourceTree = "<group>"; };
 		97B4EE631EB868A1002EDAFB /* Emitter.fsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = Emitter.fsh; sourceTree = "<group>"; };
 		97B4EE641EB874AC002EDAFB /* EmitterShader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmitterShader.swift; sourceTree = "<group>"; };
+		97E9B95F1EE1551A00088DC7 /* texture_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_32.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				97B4EE621EB86894002EDAFB /* Emitter.vsh */,
 				97B4EE631EB868A1002EDAFB /* Emitter.fsh */,
 				97B4EE2A1EB83A25002EDAFB /* Main.storyboard */,
+				97E9B95F1EE1551A00088DC7 /* texture_32.png */,
 				97B4EE2D1EB83A25002EDAFB /* Assets.xcassets */,
 				97B4EE2F1EB83A25002EDAFB /* LaunchScreen.storyboard */,
 				97B4EE321EB83A25002EDAFB /* Info.plist */,
@@ -285,6 +288,7 @@
 			files = (
 				97B4EE311EB83A25002EDAFB /* LaunchScreen.storyboard in Resources */,
 				97B4EE2E1EB83A25002EDAFB /* Assets.xcassets in Resources */,
+				97E9B9601EE1551A00088DC7 /* texture_32.png in Resources */,
 				97B4EE2C1EB83A25002EDAFB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
