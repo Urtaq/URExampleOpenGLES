@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9716E1581EE007F700372B48 /* ShaderProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9716E1571EE007F700372B48 /* ShaderProcessor.mm */; };
 		97B4EE271EB83A25002EDAFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B4EE261EB83A25002EDAFB /* AppDelegate.swift */; };
-		97B4EE291EB83A25002EDAFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B4EE281EB83A25002EDAFB /* ViewController.swift */; };
 		97B4EE2C1EB83A25002EDAFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97B4EE2A1EB83A25002EDAFB /* Main.storyboard */; };
 		97B4EE2E1EB83A25002EDAFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97B4EE2D1EB83A25002EDAFB /* Assets.xcassets */; };
 		97B4EE311EB83A25002EDAFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97B4EE2F1EB83A25002EDAFB /* LaunchScreen.storyboard */; };
@@ -20,9 +19,9 @@
 		97B4EE5A1EB83AA9002EDAFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B4EE591EB83AA9002EDAFB /* CoreGraphics.framework */; };
 		97B4EE5C1EB83AB0002EDAFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B4EE5B1EB83AB0002EDAFB /* UIKit.framework */; };
 		97B4EE5E1EB83AB9002EDAFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B4EE5D1EB83AB9002EDAFB /* Foundation.framework */; };
-		97B4EE611EB86663002EDAFB /* EmitterTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B4EE601EB86663002EDAFB /* EmitterTemplate.swift */; };
 		97B4EE651EB874AC002EDAFB /* EmitterShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B4EE641EB874AC002EDAFB /* EmitterShader.swift */; };
 		97E9B9601EE1551A00088DC7 /* texture_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E9B95F1EE1551A00088DC7 /* texture_32.png */; };
+		97E9B9631EE1556400088DC7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E9B9621EE1556400088DC7 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +48,6 @@
 		9716E1B31EE101BB00372B48 /* UROpenGLES-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UROpenGLES-PrefixHeader.pch"; sourceTree = "<group>"; };
 		97B4EE231EB83A25002EDAFB /* UROpenGLES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UROpenGLES.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97B4EE261EB83A25002EDAFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		97B4EE281EB83A25002EDAFB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		97B4EE2B1EB83A25002EDAFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		97B4EE2D1EB83A25002EDAFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97B4EE301EB83A25002EDAFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,11 +63,12 @@
 		97B4EE591EB83AA9002EDAFB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		97B4EE5B1EB83AB0002EDAFB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		97B4EE5D1EB83AB9002EDAFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		97B4EE601EB86663002EDAFB /* EmitterTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmitterTemplate.swift; sourceTree = "<group>"; };
 		97B4EE621EB86894002EDAFB /* Emitter.vsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = Emitter.vsh; sourceTree = "<group>"; };
 		97B4EE631EB868A1002EDAFB /* Emitter.fsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = Emitter.fsh; sourceTree = "<group>"; };
 		97B4EE641EB874AC002EDAFB /* EmitterShader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmitterShader.swift; sourceTree = "<group>"; };
 		97E9B95F1EE1551A00088DC7 /* texture_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_32.png; sourceTree = "<group>"; };
+		97E9B9611EE1556400088DC7 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		97E9B9621EE1556400088DC7 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,8 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				97B4EE261EB83A25002EDAFB /* AppDelegate.swift */,
-				97B4EE281EB83A25002EDAFB /* ViewController.swift */,
-				97B4EE601EB86663002EDAFB /* EmitterTemplate.swift */,
+				97E9B9611EE1556400088DC7 /* MainViewController.h */,
+				97E9B9621EE1556400088DC7 /* MainViewController.m */,
 				97B4EE641EB874AC002EDAFB /* EmitterShader.swift */,
 				9716E1551EE007E300372B48 /* ShaderProcessor.h */,
 				9716E1571EE007F700372B48 /* ShaderProcessor.mm */,
@@ -314,8 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97B4EE611EB86663002EDAFB /* EmitterTemplate.swift in Sources */,
-				97B4EE291EB83A25002EDAFB /* ViewController.swift in Sources */,
+				97E9B9631EE1556400088DC7 /* MainViewController.m in Sources */,
 				9716E1581EE007F700372B48 /* ShaderProcessor.mm in Sources */,
 				97B4EE271EB83A25002EDAFB /* AppDelegate.swift in Sources */,
 				97B4EE651EB874AC002EDAFB /* EmitterShader.swift in Sources */,

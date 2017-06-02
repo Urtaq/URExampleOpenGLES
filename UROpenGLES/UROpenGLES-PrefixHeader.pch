@@ -15,4 +15,6 @@
 #import <GLKit/GLKit.h>
 #import "UROpenGLES-Swift.h"
 
+#define NUM_PARTICLES 360
+
 #endif /* UROpenGLES_PrefixHeader_pch */
